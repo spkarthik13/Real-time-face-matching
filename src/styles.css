@@ -1,0 +1,27 @@
+.size {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
+.face1 {
+  position: fixed;
+  top: 80px;
+  left: 800px;
+}
+
+.face2 {
+  position: fixed;
+  top: 200px;
+  left: 800px;
+}
+
+.label {
+  position: fixed;
+  font-family: Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+  top: 60px;
+  left: 200px;
+  font-size: 32px;
+  font-weight: 600;
+  /* color: black; */
+}
