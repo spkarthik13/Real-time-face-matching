@@ -38,16 +38,17 @@ class App extends React.Component {
       Promise.all([modelPromise, modelPromise2, webCamPromise])
         .then(values => {
           this.detectFrame(this.videoRef.current);
+          
         })
         .catch(error => {
           console.error(error);
         });
+        
     }
   }
 
   detectFrame = video => {
-    console.log(video.width);
-    console.log(this.canvasRef.current.width);
+    
 
     faceapi.detectAllFaces(video).then(predictions => {
       const face1 = predictions[0];
@@ -96,8 +97,8 @@ class App extends React.Component {
             faceapi.euclideanDistance(res[0], res[1])
           );
           this.setState({
-            label: distance > 0.55 ? "NO MATCH :(" : "FACES MATCH!",
-            color: distance > 0.55 ? "#cc0000" : "#66ff66"
+            label: distance > 0.60? "NO MATCH :(" : "FACES MATCH!",
+            color: distance > 0.60 ? "#cc0000" : "#66ff66"
           });
           this.renderPredictions(predictions);
           requestAnimationFrame(() => {
