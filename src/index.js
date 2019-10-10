@@ -33,10 +33,10 @@ class App extends React.Component {
             };
           });
         });
-      const modelPromise = faceapi.loadSsdMobilenetv1Model(MODEL_WEIGHTS);
-      const modelPromise2 = faceapi.loadFaceRecognitionModel(MODEL_WEIGHTS);
-      Promise.all([modelPromise, modelPromise2, webCamPromise])
-        .then(values => {
+      const mobileNetLoadPromise = faceapi.loadSsdMobilenetv1Model(MODEL_WEIGHTS);
+      const faceRecLoadPromise = faceapi.loadFaceRecognitionModel(MODEL_WEIGHTS);
+      Promise.all([mobileNetLoadPromise, faceRecLoadPromise, webCamPromise])
+        .then(results => {
           this.detectFrame(this.videoRef.current);
           
         })
@@ -126,7 +126,6 @@ class App extends React.Component {
       const y = prediction.box._y;
       const width = prediction.box._width;
       const height = prediction.box._height;
-      // Draw the bounding box.
       ctx.strokeStyle = "#00FFFF";
       ctx.lineWidth = 4;
       ctx.strokeRect(x, y, width, height);
